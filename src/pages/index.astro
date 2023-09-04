@@ -3,6 +3,7 @@ import { getEntry } from 'astro:content';
 import Default from '@/layouts/Default.astro';
 import AboutMe from '@/components/about/AboutMe.astro';
 import Button from '@/components/Button.astro';
+import SocialLinks from '@/components/SocialLinks.astro';
 
 const content = await getEntry('page', 'home');
 ---
@@ -26,6 +27,7 @@ const content = await getEntry('page', 'home');
           >
         </Button>
       </a>
+      <SocialLinks />
     </div>
   </div>
 </Default>

@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Button from './Button.astro';
+
+const socials = await getCollection('social');
+const sortedSocials = socials.sort((a, b) =>
+  a.data.order > b.data.order ? 1 : -1,
+);
+---
+
+<ul class="flex gap-5">
+  {
+    sortedSocials.map((social) => (
+      <li>
+        <a class="flex" target="_blank" href={social.data.link}>
+          <Button
+            aria-label={social.data.description}
+            class="w-12 h-12 flex justify-center items-center text-white"
+          >
+            <Fragment set:html={social.data.icon} />
+          </Button>
+        </a>
+      </li>
+    ))
+  }
+</ul>
