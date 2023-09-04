@@ -1,7 +1,12 @@
 ---
 import Layout from '@/layouts/Default.astro';
+import AboutMe from '@/components/about/AboutMe.astro';
 ---
 
 <Layout>
-  <h1>Astro</h1>
+  <div class="max-w-screen-md mx-auto mt-10">
+    <div class="flex flex-col items-center gap-10">
+      <AboutMe center={true} width={300} height={300} />
+    </div>
+  </div>
 </Layout>
