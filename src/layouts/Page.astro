@@ -1,15 +1,55 @@
 ---
 import Layout from '@/layouts/Default.astro';
 import AboutMe from '@/components/about/AboutMe.astro';
+
+const links = [
+  { name: 'About', href: '/about' },
+  { name: 'Experience', href: '/experience' },
+];
 ---
 
 <Layout>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+  <div class="grid grid-cols-1 lg:grid-cols-2 mt-5">
     <div class="max-lg:hidden">
-      <AboutMe width={150} height={150} />
+      <AboutMe width={150} height={150}>
+        <nav class="flex flex-col gap-5">
+          {
+            links.map((link, index) => (
+              <a
+                class="transition-all flex gap-2 items-center text-gray-500 [&>span]:bg-gray-500"
+                href={link.href}
+              >
+                {`0${index + 1}`}
+                <span class="transition-all w-10 h-[1px]" />
+                {link.name}
+              </a>
+            ))
+          }
+        </nav>
+      </AboutMe>
     </div>
     <div>
       <slot />
     </div>
   </div>
 </Layout>
+
+<script is:inline>
+  function activeNavLink() {
+    const classes = [
+      '!text-black',
+      '[&>span]:!bg-black',
+      'dark:!text-white',
+      '[&>span]:dark:!bg-white',
+      '[&>span]:!w-24',
+    ];
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach((link) => {
+      link.classList.remove(...classes);
+      if (link.href.endsWith(window.location.pathname)) {
+        link.classList.add(...classes);
+      }
+    });
+  }
+  activeNavLink();
+</script>
