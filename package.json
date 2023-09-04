@@ -1,0 +1,51 @@
+{
+  "name": "astro-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": "=18",
+    "pnpm": ">=8"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "nx exec -- astro build",
+    "preview": "nx exec -- astro preview",
+    "typecheck": "nx exec -- astro check && nx exec -- tsc --noEmit",
+    "lint": "nx exec -- eslint . --max-warnings 0",
+    "fmt": "nx exec -- prettier --write . --plugin=prettier-plugin-astro",
+    "fmtcheck": "nx exec -- prettier --list-different . --plugin=prettier-plugin-astro",
+    "precommit": "pnpm run fmt && pnpm run lint --fix",
+    "precommitcheck": "nx affected -t=fmtcheck,lint,typecheck,build --parallel=4",
+    "postinstall": "astro sync"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.0.0",
+    "astro": "^3.0.5",
+    "flowbite": "^1.8.1",
+    "sharp": "^0.32.5",
+    "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.41.0",
+    "@astrojs/check": "^0.2.0",
+    "@astrojs/ts-plugin": "^1.1.3",
+    "@typescript-eslint/parser": "^6.5.0",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-astro": "^0.29.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "nx": "^16.7.4",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0",
+    "typescript": "^5.2.2"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
+      }
+    }
+  }
+}

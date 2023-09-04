@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Abort on error
+set -e
+
+sh -c "pnpm run precommitcheck" 
