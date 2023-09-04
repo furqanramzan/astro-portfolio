@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import Header from '@/components/Header.astro';
 ---
 
 <html lang="en">
@@ -13,6 +14,7 @@ import { ViewTransitions } from 'astro:transitions';
   </head>
   <body class="bg-gray-100 dark:bg-gray-900 text-black dark:text-white">
     <div class="max-w-screen-2xl mx-auto flex flex-col px-5 py-5 2xl:px-0">
+      <Header />
       <slot />
     </div>
   </body>
