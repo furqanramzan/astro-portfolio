@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-import { emerald } from 'tailwindcss/colors';
 import flowbite from 'flowbite/plugin';
 
 const config: Config = {
