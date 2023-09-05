@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import AstroPWA from '@vite-pwa/astro';
+import preload from 'astro-preload';
 import { color, name, shortName } from './src/utils/constants';
 
 // https://astro.build/config
@@ -39,5 +40,6 @@ export default defineConfig({
         globPatterns: ['**/*.{css,js,html,svg,png,webp,ico}'],
       },
     }),
+    preload(),
   ],
 });
