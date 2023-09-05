@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Button from './Button.astro';
+import Icon from './Icon.astro';
 
 const socials = await getCollection('social');
 const sortedSocials = socials.sort((a, b) =>
@@ -15,9 +16,9 @@ const sortedSocials = socials.sort((a, b) =>
         <a class="flex" target="_blank" href={social.data.link}>
           <Button
             aria-label={social.data.description}
-            class="w-12 h-12 flex justify-center items-center text-white"
+            class="w-10 h-10 flex justify-center items-center text-white"
           >
-            <Fragment set:html={social.data.icon} />
+            <Icon icon={social.data.icon} />
           </Button>
         </a>
       </li>
