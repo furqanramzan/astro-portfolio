@@ -1,12 +1,16 @@
 ---
 import Layout from '@/layouts/Default.astro';
 import AboutMe from '@/components/about/AboutMe.astro';
+import NavigationButtons, {
+  type Props as NavigationButtonsProps,
+} from '@/components/NavigationButtons.astro';
+import { links, navLinks } from '@/utils/constants';
+import SocialLinks from '@/components/SocialLinks.astro';
 
-const links = [
-  { name: 'About', href: '/about' },
-  { name: 'Tools and Platforms', href: '/tool' },
-  { name: 'Experience', href: '/experience' },
-];
+interface Props {
+  navigationLinks: NavigationButtonsProps;
+}
+const { navigationLinks } = Astro.props;
 ---
 
 <Layout>
@@ -15,14 +19,14 @@ const links = [
       <AboutMe width={150} height={150}>
         <nav class="flex flex-col gap-5">
           {
-            links.map((link, index) => (
+            navLinks.map((link, index) => (
               <a
                 class="transition-all flex gap-2 items-center text-gray-500 [&>span]:bg-gray-500"
-                href={link.href}
+                href={links[link].href}
               >
                 {`0${index + 1}`}
                 <span class="transition-all w-10 h-[1px]" />
-                {link.name}
+                {links[link].name}
               </a>
             ))
           }
@@ -30,8 +34,12 @@ const links = [
       </AboutMe>
     </div>
     <div>
-      <main transition:animate="slide">
+      <main class="flex flex-col gap-14" transition:animate="slide">
         <slot />
+        <NavigationButtons {...navigationLinks} />
+        <div class="flex justify-center lg:hidden">
+          <SocialLinks />
+        </div>
       </main>
     </div>
   </div>

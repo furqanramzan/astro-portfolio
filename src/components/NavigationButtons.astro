@@ -1,0 +1,22 @@
+---
+import Button from './Button.astro';
+import { links } from '@/utils/constants';
+
+type Links = typeof links;
+type LinkKey = keyof Links;
+export interface Props {
+  back: LinkKey;
+  forward: LinkKey;
+}
+
+const { back, forward } = Astro.props;
+---
+
+<div class="flex justify-center gap-4 mt-5">
+  <a href={links[back].href} class="flex">
+    <Button class="py-2 px-7 rounded-sm">{links[back].name}</Button>
+  </a>
+  <a href={links[forward].href} class="flex">
+    <Button class="py-2 px-7 rounded-sm">{links[forward].name}</Button>
+  </a>
+</div>
