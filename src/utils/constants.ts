@@ -12,6 +12,7 @@ export const links = {
     name: 'Education and Experience',
     href: '/education-and-experience',
   },
+  project: { name: 'Projects', href: '/project' },
 };
 type Links = typeof links;
 type LinkKey = keyof Links;
@@ -20,4 +21,5 @@ export const navLinks: LinkKey[] = [
   'about',
   'toolandplatform',
   'educationandexperience',
+  'project',
 ];

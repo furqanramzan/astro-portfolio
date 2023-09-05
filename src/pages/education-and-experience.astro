@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Page from '@/layouts/Page.astro';
+import Badge from '@/components/Badge.astro';
 
 const content = await getEntry('page', 'education-and-experience');
 const educations = (await getCollection('education')).sort((a, b) =>
@@ -11,7 +12,7 @@ const experiences = (await getCollection('experience')).sort((a, b) =>
 );
 ---
 
-<Page navigationLinks={{ back: 'toolandplatform', forward: 'home' }}>
+<Page navigationLinks={{ back: 'toolandplatform', forward: 'project' }}>
   <div class="flex flex-col gap-14">
     <div class="flex flex-col gap-5">
       <h2 class="font-semibold text-lg">{content.data.education}</h2>
@@ -23,7 +24,9 @@ const experiences = (await getCollection('experience')).sort((a, b) =>
                 <h3 class="font-semibold text-xl">{education.data.degree}</h3>
                 <div class="flex justify-between">
                   <p>{education.data.institute}</p>
-                  <p class="text-gray-500">{education.data.year}</p>
+                  <p class="text-gray-500 dark:text-gray-400">
+                    {education.data.year}
+                  </p>
                 </div>
               </div>
             </div>
@@ -43,13 +46,13 @@ const experiences = (await getCollection('experience')).sort((a, b) =>
                 </h3>
                 <div class="flex justify-between">
                   <p>{experience.data.company}</p>
-                  <p class="text-gray-500">{experience.data.year}</p>
+                  <p class="text-gray-500 dark:text-gray-400">
+                    {experience.data.year}
+                  </p>
                 </div>
                 <div class="flex gap-3">
                   {experience.data.skills.map((skill) => (
-                    <span class="bg-gray-300 py-2 text-gray-700 px-3 rounded-full text-sm">
-                      {skill}
-                    </span>
+                    <Badge>{skill}</Badge>
                   ))}
                 </div>
               </div>

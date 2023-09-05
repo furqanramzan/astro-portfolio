@@ -10,6 +10,6 @@ const props = Astro.props;
 const { icon, ...attrs } = props;
 ---
 
-<i class={`h-6 w-6 ${attrs.class}`} {...attrs}>
+<i class={`h-6 w-6 flex ${attrs.class || ''}`} {...attrs}>
   <Iconify name={icon} />
 </i>
