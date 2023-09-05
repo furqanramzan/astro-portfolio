@@ -31,8 +31,18 @@ const specialization = defineCollection({
   }),
 });
 
+const tools = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    order: z.number(),
+  }),
+});
+
 export const collections = {
   social,
   aboutme,
   specialization,
+  tools,
 };
