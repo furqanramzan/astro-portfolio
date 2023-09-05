@@ -11,8 +11,6 @@ interface Props {
 }
 
 const { width, height, center } = Astro.props;
-profile.width = width;
-profile.height = height;
 
 const content = await getEntry('page', 'aboutme');
 const classes =
@@ -22,14 +20,16 @@ const classes =
 <div transition:name="aboutme" class={`flex flex-col gap-10 ${classes}`}>
   <div class={`flex flex-col gap-2  ${classes}`}>
     <Image
+      width={width}
+      height={height}
       loading="eager"
       class="rounded-2xl mb-3"
       src={profile}
       alt={content.data.name}
     />
-    <p>{content.data.greeting}</p>
+    <p class="text-gray-500">{content.data.greeting}</p>
     <h1 class="font-bold text-5xl">{content.data.name}</h1>
-    <p class={`text-sm my-3 w-2/3`}>
+    <p class="text-sm my-3 w-2/3 text-gray-500">
       {content.data.designation}
     </p>
     <p class="text-2xl leading-10">

@@ -29,7 +29,9 @@ const links = [
       </AboutMe>
     </div>
     <div>
-      <slot />
+      <main transition:animate="slide">
+        <slot />
+      </main>
     </div>
   </div>
 </Layout>
