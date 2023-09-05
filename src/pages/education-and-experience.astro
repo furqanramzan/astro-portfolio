@@ -1,0 +1,62 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Page from '@/layouts/Page.astro';
+
+const content = await getEntry('page', 'education-and-experience');
+const educations = (await getCollection('education')).sort((a, b) =>
+  a.data.order > b.data.order ? 1 : -1,
+);
+const experiences = (await getCollection('experience')).sort((a, b) =>
+  a.data.order > b.data.order ? 1 : -1,
+);
+---
+
+<Page navigationLinks={{ back: 'toolandplatform', forward: 'home' }}>
+  <div class="flex flex-col gap-14">
+    <div class="flex flex-col gap-5">
+      <h2 class="font-semibold text-lg">{content.data.education}</h2>
+      <div class="flex flex-col gap-3">
+        {
+          educations.map((education) => (
+            <div class="flex gap-5 bg-gray-200 dark:bg-gray-800 p-5">
+              <div class="flex flex-col gap-1 w-full">
+                <h3 class="font-semibold text-xl">{education.data.degree}</h3>
+                <div class="flex justify-between">
+                  <p>{education.data.institute}</p>
+                  <p class="text-gray-500">{education.data.year}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="flex flex-col gap-5">
+      <h2 class="font-semibold text-lg">{content.data.experience}</h2>
+      <div class="flex flex-col gap-3">
+        {
+          experiences.map((experience) => (
+            <div class="flex gap-5 bg-gray-200 dark:bg-gray-800 p-5">
+              <div class="flex flex-col gap-1 w-full">
+                <h3 class="font-semibold text-xl">
+                  {experience.data.designation}
+                </h3>
+                <div class="flex justify-between">
+                  <p>{experience.data.company}</p>
+                  <p class="text-gray-500">{experience.data.year}</p>
+                </div>
+                <div class="flex gap-3">
+                  {experience.data.skills.map((skill) => (
+                    <span class="bg-gray-300 py-2 text-gray-700 px-3 rounded-full text-sm">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Page>

@@ -2,13 +2,13 @@
 import { getCollection, getEntry } from 'astro:content';
 import Page from '@/layouts/Page.astro';
 
-const content = await getEntry('page', 'tool');
+const content = await getEntry('page', 'tool-and-platform');
 const tools = (await getCollection('tool')).sort((a, b) =>
   a.data.order > b.data.order ? 1 : -1,
 );
 ---
 
-<Page navigationLinks={{ back: 'about', forward: 'experience' }}>
+<Page navigationLinks={{ back: 'about', forward: 'educationandexperience' }}>
   <div class="flex flex-col gap-5">
     <h2 class="font-semibold text-lg">{content.data.title}</h2>
     <div class="flex flex-col gap-3">
