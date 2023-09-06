@@ -17,7 +17,7 @@ const { navigationLinks } = Astro.props;
   <div class="grid grid-cols-1 lg:grid-cols-2 my-10">
     <div class="max-lg:hidden">
       <AboutMe width={150} height={150}>
-        <nav class="flex flex-col gap-5">
+        <nav class="flex flex-col gap-5" id="desktop_nav">
           {
             navLinks.map((link, index) => (
               <a
@@ -54,7 +54,7 @@ const { navigationLinks } = Astro.props;
       '[&>span]:dark:!bg-white',
       '[&>span]:!w-24',
     ];
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('#desktop_nav a');
     navLinks.forEach((link) => {
       link.classList.remove(...classes);
       if (link.href.endsWith(window.location.pathname)) {
