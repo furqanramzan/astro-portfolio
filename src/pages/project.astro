@@ -17,12 +17,12 @@ const projects = (await getCollection('project')).sort((a, b) =>
     <div class="flex flex-col gap-3">
       {
         projects.map((project) => (
-          <div class="flex gap-5 p-3 bg-gray-200 dark:bg-gray-800">
+          <div class="flex flex-col sm:flex-row gap-5 p-3 bg-gray-200 dark:bg-gray-800">
             <div class="flex flex-col gap-4 shrink-0">
               <Image
                 width={240}
                 height={146}
-                class="rounded-md w-full"
+                class="rounded-md"
                 src={project.data.image}
                 alt={project.data.name}
               />
