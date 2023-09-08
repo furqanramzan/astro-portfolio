@@ -73,3 +73,10 @@ Check out the [deployment documentation](https://docs.astro.build/en/guides/depl
 ## License
 
 Astro Portfolio is an open-sourced website licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Credit
+
+**Figma Design**
+
+- Author: [Ashar Iqbal](https://www.figma.com/@thisissherry)
+- Source: [Link](https://www.figma.com/community/file/1265671910152194906/DevFolio---Landing-Page)
