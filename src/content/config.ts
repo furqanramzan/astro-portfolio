@@ -5,7 +5,7 @@ const social = defineCollection({
   schema: z.object({
     name: z.string(),
     description: z.string(),
-    link: z.string().url(),
+    link: z.string(),
     icon: z.string(),
     order: z.number(),
   }),
