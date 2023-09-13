@@ -3,12 +3,12 @@ import tailwind from '@astrojs/tailwind';
 import AstroPWA from '@vite-pwa/astro';
 import preload from 'astro-preload';
 import compress from 'astro-compress';
+import prefetch from '@astrojs/prefetch';
 import { color, name, shortName } from './src/utils/constants';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-    tailwind(),
     AstroPWA({
       base: '/',
       scope: '/',
@@ -41,6 +41,8 @@ export default defineConfig({
         globPatterns: ['**/*.{css,js,html,svg,png,webp,ico}'],
       },
     }),
+    tailwind(),
+    prefetch(),
     preload(),
     compress(),
   ],
